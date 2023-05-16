@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #222;
+  position: relative;
+  min-height: 100vh;
+  background-color: #b3e6f4;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 450px;
+  padding: 1.3rem;
+  min-height: 250px;
+  position: absolute;
+  z-index: 2;
+  top: 20%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+}
+
+.container .a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.container input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.container p {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0.4rem 0 0.2rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.4rem;
+  font-weight: 700;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  text-align: center;
+  font-size: 1em;
+}
+
+.btn-open {
+  position: absolute;
+  bottom: 150px;
+}
+
+.oo {
+  transform: translate(10px, -20px);
+  padding: 0.5rem 0.7rem;
+  background: #eee;
+  border-radius: 50%;
+  text-align: end;
+  display: flex;
+  justify-content: end;
+  margin: 10px 350px;
+}
+
+.ov {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+.k {
+  display: none;
+}
+	</style>
+</head>
+<body>
+	<section class="container k">
+		<div class="a">
+		  <button class="oo">⨉</button>
+		</div>
+		<div>
+		  <h3>Modal</h3>
+		  <p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, necessitatibus id architecto, adipisci maiores accusamus reprehenderit ipsa autem praesentium dolor quia laboriosam dignissimos incidunt velit odit mollitia iste doloribus est!
+		  </p>
+		</div>
+	  <div class="">
+		  <button class="btn">open</button>
+		  <button class="btn">exit</button>
+	
+	  </div>
+	  </section>
+	  
+	  <div class="ov k"></div>
+	  <button class="btn btn-open">Open Moda</button>
+	  
+<script>
+	const container = document.querySelector(".container");
+const ov = document.querySelector(".ov");
+const opencontainerBtn = document.querySelector(".btn-open");
+const closecontainerBtn = document.querySelector(".oo");
+const btn = document.querySelectorAll(".btn");
+
+const closecontainer = function () {
+  container.classList.add("k");
+  ov.classList.add("k");
+};
+
+closecontainerBtn.addEventListener("click", closecontainer);
+btn[1].addEventListener("click", closecontainer);
+ov.addEventListener("click", closecontainer);
+
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape" && !container.classList.contains("k")) {
+    closecontainer();
+  }
+});
+
+const opencontainer = function () {
+  container.classList.remove("k");
+  ov.classList.remove("k");
+};
+opencontainerBtn.addEventListener("click", opencontainer);
+</script>
+</body>
+</html>
